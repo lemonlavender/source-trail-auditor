@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm test
+      - run: npm run package
+      - name: Verify checksums
+        run: cd dist && sha256sum -c SHA256SUMS.txt
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: .github/release-notes-v1.0.0.md
+          files: |
+            dist/source-trail-auditor-1.0.0.ipollowork-plugin
+            dist/source-trail-auditor-1.0.0-skill.zip
+            dist/source-trail-auditor-1.0.0-source.zip
+            dist/SHA256SUMS.txt

@@ -1,0 +1,23 @@
+name: Bootstrap repository
+
+on: [workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish source
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xJf source-trail-source-20261017.tar.xz
+          rm source-trail-source-20261017.tar.xz .github/workflows/bootstrap.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publish Source Trail Auditor 1.0.0"
+          git tag v1.0.0
+          git push origin HEAD:main --follow-tags

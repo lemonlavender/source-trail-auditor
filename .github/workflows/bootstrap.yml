@@ -15,6 +15,7 @@ jobs:
         run: |
           set -euo pipefail
           tar -xJf source-trail-source-20261017.tar.xz
+          find . -name '._*' -delete
           rm source-trail-source-20261017.tar.xz .github/workflows/bootstrap.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

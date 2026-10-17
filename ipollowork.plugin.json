@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 2,
+  "id": "source-trail-auditor",
+  "name": "Source Trail Auditor",
+  "description": "Audit AI-assisted web research with claim-level source mapping, official task links, freshness checks, and prioritized verification routes.",
+  "source": {
+    "format": "ipollowork-extension-manifest",
+    "origin": "local",
+    "trusted": false
+  },
+  "package": {
+    "version": "1.0.0",
+    "publisher": {
+      "id": "lemonlavender",
+      "name": "lemonlavender"
+    },
+    "updateId": "lemonlavender/source-trail-auditor",
+    "compatibility": {
+      "ipollowork": ">=0.50.12"
+    }
+  },
+  "resources": [
+    {
+      "type": "skill",
+      "id": "source-trail-auditor",
+      "label": "Source Trail Auditor",
+      "path": "skills/source-trail-auditor",
+      "required": true
+    }
+  ]
+}
